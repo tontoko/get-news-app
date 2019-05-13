@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>get_news_tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>get_news_tool</h1>
+    <p>yahooニュースを.csvで取得</p>
+    <%= form_tag :action => :get_news do %>
+        <%= label_tag :カテゴリ選択 %>
+        <%= select_tag :category, options_for_select([["検索ワードから探す", ""],["国内", "dom"],["国際","c_int"],["経済", "bus"],["エンタメ", "c_ent"],["スポーツ", "c_spo"],["IT・科学", "c_sci"],["ライフ", "c_life"],["地域", "loc"]]) %>
+        <%= label_tag :キーワード選択 %>
+        <%= text_field_tag :keyword %>
+        <%= submit_tag :検索 %>
+    <% end %>
+    
+    <%= flash[:message] %>
+    
+    <%= form_tag :action => :download do %>
+        <%= submit_tag :ダウンロード %>
+    <% end %>
+        
+</body>
+</html>
